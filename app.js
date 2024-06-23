@@ -1,0 +1,75 @@
+//Variables
+/*
+let numeroMaximoPosible = 100;
+let numeroSecreto = Math.floor(Math.random()*numeroMaximoPosible)+1;
+let numeroUsuario = 0;
+let intentos = 1;
+//let palabraVeces = 'vez';
+let maximosIntentos = 6;
+
+
+while (numeroUsuario != numeroSecreto) {
+    numeroUsuario = parseInt(prompt(`Me indicas un número entre 1 y ${numeroMaximoPosible}  por favor:`));
+
+    console.log(typeof(numeroUsuario));
+    if (numeroUsuario == numeroSecreto) {
+        //Acertamos, fue verdadera la condición
+        alert(`Acertaste, el número es: ${numeroUsuario}. Lo hiciste en ${intentos} ${intentos == 1 ? 'vez' : 'veces' }`);
+    } else {
+        if (numeroUsuario > numeroSecreto) {
+            alert('El número secreto es menor');
+        } else {
+            alert('El número secreto es mayor');
+        }
+        //Incrementamos el contador cuando no acierta
+        //intentos = intentos + 1;
+        //intentos += 1;
+        intentos++;
+
+        //palabraVeces = 'veces';
+        if (intentos > maximosIntentos) {
+            alert(`Llegaste al número máximo de ${maximosIntentos} intentos`);
+            break;
+        }
+        //La condición no se cumplió
+        //alert('Lo siento, no acertaste el número');
+    }
+}
+*/
+
+// Solicitar al usuario el límite máximo
+const MAX_NUMBER = parseInt(
+  prompt("Ingresa el límite máximo del número secreto (entre 1 y 1000):")
+);
+// Definimos las variables clave
+const MAX_ATTEMPTS = 6;
+let secretNumber = Math.floor(Math.random() * MAX_NUMBER) + 1;
+let attempts = 0;
+
+// Función para manejar el juego
+function playGame() {
+  while (attempts < MAX_ATTEMPTS) {
+    const userGuess = prompt(
+      `Adivina el número secreto entre 1 y ${MAX_NUMBER}:`
+    );
+    attempts++;
+
+    if (userGuess == secretNumber) {
+      alert(
+        `¡Felicitaciones, has acertado el número secreto en ${attempts} intentos!`
+      );
+      return;
+    } else if (userGuess < secretNumber) {
+      alert("El número secreto es mayor.");
+    } else {
+      alert("El número secreto es menor.");
+    }
+  }
+
+  alert(
+    `Lo siento, has agotado tus ${MAX_ATTEMPTS} intentos. El número secreto era ${secretNumber}.`
+  );
+}
+
+// Iniciar el juego
+playGame();
